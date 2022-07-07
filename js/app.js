@@ -7,7 +7,9 @@ const grid = [
     [0, 0, 0, 0, 0, 0]
 ];
 const evolvedGrid = structuredClone(grid);
+const gridContainerElement = document.getElementById('cell-container');
 console.table(grid);
+console.log(gridContainerElement)
 
 function displayGridValues() {
     for (y = 1; y < 5; y++) {
@@ -18,6 +20,7 @@ function displayGridValues() {
             console.log('NeighbourCount: ' + countNeighbourCells(y, x));
             lifeCheck(y, x);
             console.log('--------');
+            displayCell(y, x);
         }
     }
     console.table(evolvedGrid);
@@ -55,4 +58,17 @@ function lifeCheck(y, x) {
         }
     }
 }
+
+function displayCell(y, x) {
+    const cell = document.createElement('div');
+    cell.setAttribute('class', 'cell')
+    if (grid[y][x] === 1) {
+        cell.setAttribute('class', 'alive');
+    } else {
+        cell.setAttribute('class', 'dead');
+        }
+    cell.innerHTML = grid[y][x];
+    gridContainerElement.appendChild(cell);
+}
+
 displayGridValues();
