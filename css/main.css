@@ -1,0 +1,30 @@
+p {
+    color: green;
+    display: block;
+    width: 200px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    transform: rotate(45deg);
+    font-family: Arial;
+    font-size: xx-large;
+}
+
+#cell-container {
+    display: grid;
+    grid-template-columns: repeat(4, 45px);
+    grid-template-rows: repeat(4, 45px);
+    gap: 5px;
+}
+.cell {
+    border: 5px solid white;
+    height: 40px;
+    width: 40px;
+}
+.dead {
+    background-color: greenyellow;
+    color: greenyellow;
+}
+.alive {
+    background-color: green;
+    color: green;
+}
