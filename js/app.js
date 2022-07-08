@@ -1,4 +1,4 @@
-const grid = [ 
+let grid = [ 
     [0, 0, 0, 0, 0, 0],
     [0, 1, 1, 0, 0, 0],
     [0, 1, 1, 0, 0, 0],
@@ -6,26 +6,19 @@ const grid = [
     [0, 0, 0, 1, 1, 0],
     [0, 0, 0, 0, 0, 0]
 ];
-const evolvedGrid = structuredClone(grid);
-const gridContainerElement = document.getElementById('cell-container');
-console.table(grid);
-console.log(gridContainerElement)
 
-function displayGridValues() {
-    for (y = 1; y < 5; y++) {
-        for (x = 1; x < 5; x++) {
-            console.log('y Position: ' + y);
-            console.log('x Position: ' + x);
-            console.log('Wert: ' + grid[y][x]);
-            console.log('NeighbourCount: ' + countNeighbourCells(y, x));
-            lifeCheck(y, x);
-            console.log('--------');
-            displayCell(y, x);
+const gridContainerElement = document.getElementById('cell-container');
+
+function creatEvolvedGrid(grid, newGrid) {
+    for (y = 1; y < grid.length - 1; y++) {
+        for (x = 1; x < grid[y].length - 1; x++) {
+            prepareEvolvedGrid(grid, newGrid, y, x);
+            showEvolvedGrid(grid, y, x);
         }
     }
-    console.table(evolvedGrid);
 }
-function countNeighbourCells(y, x) {
+
+function countNeighbourCells(grid, y, x) {
     let neighbourCount = 0;
     neighbourCount = neighbourCount + grid[y-1][x];
     neighbourCount = neighbourCount + grid[y-1][x+1];
@@ -37,29 +30,30 @@ function countNeighbourCells(y, x) {
     neighbourCount = neighbourCount + grid[y-1][x-1];
     return neighbourCount;
 }
-function lifeCheck(y, x) {
+
+function prepareEvolvedGrid(grid, newGrid, y, x) {
     const value = grid[y][x];
-    const neighbourCount = countNeighbourCells(y, x);
+    const neighbourCount = countNeighbourCells(grid, y, x);
     if (value === 0) {
         if (neighbourCount === 3) {
-            evolvedGrid[y][x] = 1;
+            newGrid[y][x] = 1;
             console.log('birth');
         } else {
-            evolvedGrid[y][x] = 0;
+            newGrid[y][x] = 0;
             console.log('death');
         }
     } else {
         if (neighbourCount === 3 || neighbourCount === 2) {
-            evolvedGrid[y][x] = 1;
+            newGrid[y][x] = 1;
             console.log ('alive');
         } else {
-            evolvedGrid[y][x] = 0;
+            newGrid[y][x] = 0;
             console.log ('death');
         }
     }
 }
 
-function displayCell(y, x) {
+function showEvolvedGrid(grid, y, x) {
     const cell = document.createElement('div');
     cell.setAttribute('class', 'cell')
     if (grid[y][x] === 1) {
@@ -71,4 +65,36 @@ function displayCell(y, x) {
     gridContainerElement.appendChild(cell);
 }
 
-displayGridValues();
+function setGridSize(size) {
+    const style = document.createElement('style');
+    document.head.appendChild(style);
+    style.sheet.insertRule(`
+        #cell-container {
+            display: grid;
+            grid-template-columns: repeat(${size}, 45px);
+            grid-template-rows: repeat(${size}, 45px);
+            gap: 5px;
+        }
+    `
+    )
+}
+
+function cloneGrid(grid) {
+    return structuredClone(grid);
+}
+
+function deleteGrid() {
+    gridContainerElement.innerHTML = '';
+}
+
+function startSimulation(cycles) {
+    for (duration = 1; duration <= cycles; duration++) {
+        let newGrid = cloneGrid(grid);
+        deleteGrid();
+        creatEvolvedGrid(grid, newGrid);
+        grid = newGrid;
+    }
+}
+
+setGridSize(grid.length - 2);
+startSimulation(10);

@@ -1,29 +1,27 @@
 p {
-    color: green;
+    color: black;
+    border: 5px solid rgb(3, 255, 3);
     display: block;
-    width: 200px;
+    width: 173px;
     margin-top: 100px;
     margin-bottom: 100px;
-    transform: rotate(45deg);
+    transform: rotate(21deg);
     font-family: Arial;
     font-size: xx-large;
+    background: rgb(3, 255, 3);
 }
 
-#cell-container {
-    display: grid;
-    grid-template-columns: repeat(4, 45px);
-    grid-template-rows: repeat(4, 45px);
-    gap: 5px;
-}
 .cell {
     border: 5px solid white;
     height: 40px;
     width: 40px;
 }
+
 .dead {
     background-color: greenyellow;
     color: greenyellow;
 }
+
 .alive {
     background-color: green;
     color: green;
