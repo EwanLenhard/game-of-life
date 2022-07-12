@@ -11,6 +11,34 @@ const gridContainerElement = document.getElementById('cell-container');
 
 var _isPaused=false;
 
+function createRandomGrid(ySize, xSize) {
+    let randomgrid = [];
+    randomgrid[0] = new Array(ySize + 1).fill(0);
+    randomgrid[ySize] = new Array(ySize + 1).fill(0);
+    for (y = 1; y < ySize; y++) {
+        randomgrid[y] = [];
+        randomgrid[y][0] = 0;
+        randomgrid[y][xSize] = 0;
+        for (x = 1; x< xSize; x++) {
+            randomgrid[y][x] = getRandomInt(2);
+        }
+    }
+    console.table(randomgrid);
+    return randomgrid;
+}
+
+function showRandomGrid(ySize, xSize) {
+    let randomgrid = createRandomGrid(ySize, xSize);
+    deleteGrid();
+    grid = randomgrid;
+    setGridSize(grid.length - 2);
+    showEvolvedGrid(grid, ySize, xSize);
+}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+
 function creatEvolvedGrid(grid, newGrid) {
     for (y = 1; y < grid.length - 1; y++) {
         for (x = 1; x < grid[y].length - 1; x++) {
