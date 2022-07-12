@@ -9,6 +9,8 @@ let grid = [
 
 const gridContainerElement = document.getElementById('cell-container');
 
+var _isPaused=false;
+
 function creatEvolvedGrid(grid, newGrid) {
     for (y = 1; y < grid.length - 1; y++) {
         for (x = 1; x < grid[y].length - 1; x++) {
@@ -87,14 +89,43 @@ function deleteGrid() {
     gridContainerElement.innerHTML = '';
 }
 
-function startSimulation(cycles) {
-    for (duration = 1; duration <= cycles; duration++) {
+function startSimulation() {
+    var loopTimeout = function(i, interval, func) {
+       
+        if(!_isPaused) {
+            return;
+        }
+        // Call the function
+        func(i);
+    
+        i++;
+    
+        // "loop"
+        setTimeout(function() {
+            loopTimeout(i, interval, func);
+        }, interval);
+    }
+    loopTimeout(0, 300, function(i) {
         let newGrid = cloneGrid(grid);
         deleteGrid();
         creatEvolvedGrid(grid, newGrid);
         grid = newGrid;
-    }
+    });
 }
 
 setGridSize(grid.length - 2);
-startSimulation(10);
+
+function startOrStop() {
+    _isPaused = !_isPaused;
+    console.log (_isPaused);
+    if(_isPaused) {
+        startSimulation();
+    }
+}
+
+function nextEvoulution() {
+    let newGrid = cloneGrid(grid);
+    deleteGrid();
+    creatEvolvedGrid(grid, newGrid);
+    grid = newGrid;
+}

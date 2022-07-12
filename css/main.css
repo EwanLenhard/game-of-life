@@ -1,28 +1,26 @@
 p {
     color: black;
-    border: 5px solid rgb(3, 255, 3);
+    border: 3px solid white;
     display: block;
-    width: 173px;
+    width: 100px;
     margin-top: 100px;
     margin-bottom: 100px;
-    transform: rotate(21deg);
-    font-family: Arial;
+    font-family: arial;
     font-size: xx-large;
-    background: rgb(3, 255, 3);
 }
 
 .cell {
-    border: 5px solid white;
+    border: 5px solid rgb(249, 249, 249);
     height: 40px;
     width: 40px;
 }
 
-.dead {
-    background-color: greenyellow;
-    color: greenyellow;
+.alive {
+    background-color: rgb(26, 196, 85);
+    color: rgb(26, 196, 85);
 }
 
-.alive {
-    background-color: green;
-    color: green;
+.dead {
+    background-color: rgb(36, 36, 36);
+    color: rgb(36, 36, 36);
 }
