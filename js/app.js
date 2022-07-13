@@ -1,4 +1,4 @@
-let grid = [ 
+let grid = [
     [0, 0, 0, 0, 0, 0],
     [0, 1, 1, 0, 0, 0],
     [0, 1, 1, 0, 0, 0],
@@ -9,17 +9,15 @@ let grid = [
 
 const gridContainerElement = document.getElementById('cell-container');
 
-var _isPaused=false;
-
 function createRandomGrid(ySize, xSize) {
     let randomgrid = [];
-    randomgrid[0] = new Array(ySize + 1).fill(0);
-    randomgrid[ySize] = new Array(ySize + 1).fill(0);
+    randomgrid[0] = new Array(ySize + 2).fill(0);
+    randomgrid[ySize] = new Array(xSize + 3).fill(0);
     for (y = 1; y < ySize; y++) {
         randomgrid[y] = [];
         randomgrid[y][0] = 0;
-        randomgrid[y][xSize] = 0;
-        for (x = 1; x< xSize; x++) {
+        randomgrid[y][xSize + 2] = 0;
+        for (x = 1; x < xSize + 2; x++) {
             randomgrid[y][x] = getRandomInt(2);
         }
     }
@@ -27,12 +25,18 @@ function createRandomGrid(ySize, xSize) {
     return randomgrid;
 }
 
+var _isPaused=false;
+
 function showRandomGrid(ySize, xSize) {
     let randomgrid = createRandomGrid(ySize, xSize);
     deleteGrid();
     grid = randomgrid;
-    setGridSize(grid.length - 2);
-    showEvolvedGrid(grid, ySize, xSize);
+    setGridSize(ySize, xSize);
+    for (y = 1; y < grid.length - 1; y++) {
+        for (x = 1; x < grid[y].length - 1; x++) {
+            showEvolvedGrid(grid, y, x);
+        }
+    }
 }
 
 function getRandomInt(max) {
@@ -95,14 +99,14 @@ function showEvolvedGrid(grid, y, x) {
     gridContainerElement.appendChild(cell);
 }
 
-function setGridSize(size) {
+function setGridSize(ySize, xSize) {
     const style = document.createElement('style');
     document.head.appendChild(style);
     style.sheet.insertRule(`
         #cell-container {
             display: grid;
-            grid-template-columns: repeat(${size}, 45px);
-            grid-template-rows: repeat(${size}, 45px);
+            grid-template-columns: repeat(${ySize}, 45px);
+            grid-template-rows: repeat(${xSize}, 45px);
             gap: 5px;
         }
     `
@@ -119,15 +123,15 @@ function deleteGrid() {
 
 function startSimulation() {
     var loopTimeout = function(i, interval, func) {
-       
+
         if(!_isPaused) {
             return;
         }
         // Call the function
         func(i);
-    
+
         i++;
-    
+
         // "loop"
         setTimeout(function() {
             loopTimeout(i, interval, func);
