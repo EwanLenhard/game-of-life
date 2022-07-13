@@ -10,27 +10,27 @@ let grid = [
 const gridContainerElement = document.getElementById('cell-container');
 
 function createRandomGrid(ySize, xSize) {
-    let randomgrid = [];
-    randomgrid[0] = new Array(ySize + 2).fill(0);
-    randomgrid[ySize] = new Array(xSize + 3).fill(0);
+    let randomGrid = [];
+    randomGrid[0] = new Array(ySize + 2).fill(0);
+    randomGrid[ySize] = new Array(xSize + 3).fill(0);
     for (y = 1; y < ySize; y++) {
-        randomgrid[y] = [];
-        randomgrid[y][0] = 0;
-        randomgrid[y][xSize + 2] = 0;
+        randomGrid[y] = [];
+        randomGrid[y][0] = 0;
+        randomGrid[y][xSize + 2] = 0;
         for (x = 1; x < xSize + 2; x++) {
-            randomgrid[y][x] = getRandomInt(2);
+            randomGrid[y][x] = getRandomInt(2);
         }
     }
-    console.table(randomgrid);
-    return randomgrid;
+    console.table(randomGrid);
+    return randomGrid;
 }
 
 var _isPaused=false;
 
 function showRandomGrid(ySize, xSize) {
-    let randomgrid = createRandomGrid(ySize, xSize);
+    let randomGrid = createRandomGrid(ySize, xSize);
     deleteGrid();
-    grid = randomgrid;
+    grid = randomGrid;
     setGridSize(ySize, xSize);
     for (y = 1; y < grid.length - 1; y++) {
         for (x = 1; x < grid[y].length - 1; x++) {
@@ -43,7 +43,7 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
 
-function creatEvolvedGrid(grid, newGrid) {
+function createEvolvedGrid(grid, newGrid) {
     for (y = 1; y < grid.length - 1; y++) {
         for (x = 1; x < grid[y].length - 1; x++) {
             prepareEvolvedGrid(grid, newGrid, y, x);
@@ -52,24 +52,24 @@ function creatEvolvedGrid(grid, newGrid) {
     }
 }
 
-function countNeighbourCells(grid, y, x) {
-    let neighbourCount = 0;
-    neighbourCount = neighbourCount + grid[y-1][x];
-    neighbourCount = neighbourCount + grid[y-1][x+1];
-    neighbourCount = neighbourCount + grid[y][x+1];
-    neighbourCount = neighbourCount + grid[y+1][x+1];
-    neighbourCount = neighbourCount + grid[y+1][x];
-    neighbourCount = neighbourCount + grid[y+1][x-1];
-    neighbourCount = neighbourCount + grid[y][x-1];
-    neighbourCount = neighbourCount + grid[y-1][x-1];
-    return neighbourCount;
+function countNeighborCells(grid, y, x) {
+    let neighborCount = 0;
+    neighborCount = neighborCount + grid[y-1][x];
+    neighborCount = neighborCount + grid[y-1][x+1];
+    neighborCount = neighborCount + grid[y][x+1];
+    neighborCount = neighborCount + grid[y+1][x+1];
+    neighborCount = neighborCount + grid[y+1][x];
+    neighborCount = neighborCount + grid[y+1][x-1];
+    neighborCount = neighborCount + grid[y][x-1];
+    neighborCount = neighborCount + grid[y-1][x-1];
+    return neighborCount;
 }
 
 function prepareEvolvedGrid(grid, newGrid, y, x) {
     const value = grid[y][x];
-    const neighbourCount = countNeighbourCells(grid, y, x);
+    const neighborCount = countNeighborCells(grid, y, x);
     if (value === 0) {
-        if (neighbourCount === 3) {
+        if (neighborCount === 3) {
             newGrid[y][x] = 1;
             console.log('birth');
         } else {
@@ -77,7 +77,7 @@ function prepareEvolvedGrid(grid, newGrid, y, x) {
             console.log('death');
         }
     } else {
-        if (neighbourCount === 3 || neighbourCount === 2) {
+        if (neighborCount === 3 || neighborCount === 2) {
             newGrid[y][x] = 1;
             console.log ('alive');
         } else {
@@ -140,7 +140,7 @@ function startSimulation() {
     loopTimeout(0, 300, function(i) {
         let newGrid = cloneGrid(grid);
         deleteGrid();
-        creatEvolvedGrid(grid, newGrid);
+        createEvolvedGrid(grid, newGrid);
         grid = newGrid;
     });
 }
@@ -155,9 +155,9 @@ function startOrStop() {
     }
 }
 
-function nextEvoulution() {
+function nextEvolution() {
     let newGrid = cloneGrid(grid);
     deleteGrid();
-    creatEvolvedGrid(grid, newGrid);
+    createEvolvedGrid(grid, newGrid);
     grid = newGrid;
 }
