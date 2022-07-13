@@ -11,13 +11,13 @@ const gridContainerElement = document.getElementById('cell-container');
 
 function createRandomGrid(ySize, xSize) {
     let randomGrid = [];
-    randomGrid[0] = new Array(ySize + 2).fill(0);
-    randomGrid[ySize] = new Array(xSize + 3).fill(0);
-    for (y = 1; y < ySize; y++) {
+    randomGrid[0] = new Array(xSize + 2).fill(0);
+    randomGrid[ySize + 1] = new Array(xSize + 2).fill(0);
+    for (y = 1; y < ySize + 1; y++) {
         randomGrid[y] = [];
         randomGrid[y][0] = 0;
-        randomGrid[y][xSize + 2] = 0;
-        for (x = 1; x < xSize + 2; x++) {
+        randomGrid[y][xSize + 1] = 0;
+        for (x = 1; x < xSize + 1; x++) {
             randomGrid[y][x] = getRandomInt(2);
         }
     }
@@ -105,8 +105,8 @@ function setGridSize(ySize, xSize) {
     style.sheet.insertRule(`
         #cell-container {
             display: grid;
-            grid-template-columns: repeat(${ySize}, 45px);
-            grid-template-rows: repeat(${xSize}, 45px);
+            grid-template-columns: repeat(${xSize}, 45px);
+            grid-template-rows: repeat(${ySize}, 45px);
             gap: 5px;
         }
     `
