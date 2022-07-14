@@ -61,8 +61,8 @@
   - Bugfixing issues with random grid
   - Session with UX designer about user personas and collaboration about icons for navigation
 - Day 9:
+  - Add [normalize.css](https://github.com/sindresorhus/modern-normalize) before custom.css
   - Implement header design with CSS flexbox
-  - ...
   - Useful links:
       - [Header element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header)
       - [Nav element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav)
