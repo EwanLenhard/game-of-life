@@ -1,26 +1,48 @@
-p {
-    color: black;
-    border: 3px solid white;
-    display: block;
-    width: 100px;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    font-family: arial;
-    font-size: xx-large;
-}
-
 .cell {
-    border: 5px solid rgb(249, 249, 249);
+    border: 5px solid white;
     height: 40px;
     width: 40px;
 }
 
 .alive {
-    background-color: rgb(26, 196, 85);
-    color: rgb(26, 196, 85);
+    background-color: #26e485;
+    color: #26e485;
 }
 
 .dead {
     background-color: rgb(36, 36, 36);
     color: rgb(36, 36, 36);
+}
+
+header { 
+    display: flex;
+    width: 100%;
+    background-color: #EDEDED;
+    margin-bottom: 5px;
+}
+
+header a {
+    flex-grow: 1;
+}
+
+header nav ul {
+    display: flex;
+    list-style-type: none;
+}
+
+.container {
+    position: sticky;
+}
+
+header button {
+    border: 0;
+    background-color:rgb(36, 36, 36);
+    border-radius: 10px;
+    padding: 10px 20px;
+    color: white;
+}
+
+li {
+    margin: 5px;
+    margin-top: 10px;
 }

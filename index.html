@@ -7,20 +7,29 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css"><!-- TODO Add styles -->
 
 </head>
 
 <body>
-
-<button onclick="startOrStop()">Start</button>
-
-<button onclick="nextEvolution()">Next</button>
-
-<button onclick="showRandomGrid(10, 10)">Randomize</button>
+    <div class="container">
+        <header>
+            <a href=""><img src="" alt="Game of Life" title="Game of Life Logo"/></a>
+            <nav>
+                <ul>
+                    <li><button onclick="startOrStop()">Start</button></li>
+                    <li><button onclick="nextEvolution()">Next</button></li>
+                    <li><button onclick="showRandomGrid(110, 130)">Randomize</button></li>
+                    <li>Reset</li>
+                    <li>Help</li>
+                    <li>Options</li>
+                </ul>
+            </nav>
+        </header>
+    </div>
 
 <!-- Add your site or application content here -->
-<p>Game ---of--- life</p>
 
 <div id="cell-container">
 
