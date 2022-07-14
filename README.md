@@ -26,6 +26,7 @@
   - Display state array + single item coordinates + values in browser console
   - Useful links:
     - [Variables and Statements](https://wesbos.com/javascript/01-the-basics/variables-and-statements)
+    - [5 JavaScript Konzepte die du kennen musst (als Anfänger)](https://www.youtube.com/watch?v=LZpS4xS307Q)
     - [Arrays](https://wesbos.com/javascript/08-data-types/arrays)
     - [for-Loops](https://wesbos.com/javascript/09-gettin-loopy/54-looping-and-iterating-for-for-in-for-off-and-while-loops)
 - Day 3:
@@ -48,7 +49,21 @@
 - Day 5:
   - Create initital game loop version with 10 fixed cycles
 - Day 6:
-  - TODO
+  - Create a simulation loop function with recursion
+  - Create a start / stop button for the loop
   - Useful links:
+    - [What is recursion](https://www.youtube.com/watch?v=6oDQaB2one8)
     - [Create a proper game loop](https://spicyyoghurt.com/tutorials/html5-javascript-game-development/create-a-proper-game-loop-with-requestanimationframe)
-  
+- Day 7:
+  - Add functionality to create a random grid incl. some bugs ;)
+  - Session with UX designer for a nice app layout
+- Day 8:
+  - Bugfixing issues with random grid
+  - Session with UX designer about user personas and collaboration about icons for navigation
+- Day 9:
+  - Implement header design with CSS flexbox
+  - ...
+  - Useful links:
+      - [Header element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header)
+      - [Nav element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav)
+      - [Flexbox Adventure](https://codingfantasy.com/games/flexboxadventure/play)
