@@ -149,9 +149,12 @@ setGridSize(grid.length - 2);
 
 function startOrStop() {
     _isPaused = !_isPaused;
-    console.log (_isPaused);
+    const playButton = document.getElementById('play-button')
     if(_isPaused) {
         startSimulation();
+        playButton.setAttribute('class', 'pause')
+    } else {
+        playButton.setAttribute('class', 'start')
     }
 }
 
@@ -161,3 +164,4 @@ function nextEvolution() {
     createEvolvedGrid(grid, newGrid);
     grid = newGrid;
 }
+

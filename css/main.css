@@ -16,6 +16,7 @@
 
 header { 
     display: flex;
+    align-items: center;
     width: 100%;
     background-color: #EDEDED;
     margin-bottom: 5px;
@@ -23,7 +24,19 @@ header {
 
 header a {
     flex-grow: 1;
+    display: flex;
 }
+
+header .logo {
+    display: block;
+    background-image: url('../img/logo.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+} 
 
 header nav ul {
     display: flex;
@@ -46,3 +59,53 @@ li {
     margin: 5px;
     margin-top: 10px;
 }
+
+span {
+    visibility: hidden;
+}
+
+.start {
+    background-image: url('../img/icon-play.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 13px;
+    height: 23px;
+    padding: 25px;
+}
+
+.pause {
+    background-image: url('../img/icon-pause.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 13px;
+    height: 23px;
+    padding: 25px;
+}
+
+.next {
+    background-image: url('../img/icon-next.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 13px;
+    height: 23px;
+    padding: 25px;
+}
+
+.randomize {
+    background-image: url('../img/icon-randomize.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 13px;
+    height: 23px;
+    padding: 25px;
+}
+
+.reset {
+    background-image: url('../img/icon-reload.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 13px;
+    height: 23px;
+    padding: 25px;
+}
+
