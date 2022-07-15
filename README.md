@@ -67,3 +67,11 @@
       - [Header element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header)
       - [Nav element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav)
       - [Flexbox Adventure](https://codingfantasy.com/games/flexboxadventure/play)
+- Day 10:
+  - Optimize header layout further
+  - [Add a welcome screen](https://github.com/EwanLenhard/game-of-life/issues/8) incl. web font + change app starting behaviour
+  - Make use of Git branches + create a [first Pull Request](https://github.com/EwanLenhard/game-of-life/pull/15) linked to issue https://github.com/EwanLenhard/game-of-life/issues/8
+  - Useful links:
+    - [Web fonts](https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Web_fonts)
+    - [A visual introduction to Git](https://medium.com/@ashk3l/a-visual-introduction-to-git-9fdca5d3b43a)
+    - [Learn Git Branching](https://learngitbranching.js.org)
