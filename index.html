@@ -13,12 +13,16 @@
 </head>
 
 <body>
+   <div class="overlay" id="overlay">
+    <div class="logo"></div>
+    <button onclick="start()" class="start">Start</button>
+   </div>
     <div class="container">
         <header>
             <a href="/"><div title="Game of Life Logo" class="logo"></div></a>
             <nav>
                 <ul>
-                    <li><button onclick="startOrStop()" class="start" id="play-button"><span>start</span></button></li>
+                    <li><button onclick="startOrStop()" class="play" id="play-button"><span>play</span></button></li>
                     <li><button onclick="nextEvolution()" class="next"><span>next</span></button></li>
                     <li><button onclick="showRandomGrid(15, 33)" class="randomize"><span>randomize</span></button></li>
                     <li><button onclick="resetGrid()" class="reset"><span>reset</span></button></li>
