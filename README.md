@@ -67,6 +67,7 @@
       - [Header element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header)
       - [Nav element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav)
       - [Flexbox Adventure](https://codingfantasy.com/games/flexboxadventure/play)
+      - [Reboot, Reset & Reasoning](https://css-tricks.com/reboot-resets-reasoning/)
 - Day 10:
   - Optimize header layout further
   - [Add a welcome screen](https://github.com/EwanLenhard/game-of-life/issues/8) incl. web font + change app starting behaviour
