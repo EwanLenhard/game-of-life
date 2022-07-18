@@ -9,6 +9,17 @@ let grid = [
 
 const gridContainerElement = document.getElementById('cell-container');
 
+function start() {
+    hideOverlay();
+    showRandomGrid(15, 33);
+    startOrStop()
+}
+
+function hideOverlay() {
+    const overlay = document.getElementById('overlay');
+    overlay.style['display'] = 'none';
+}
+
 function createRandomGrid(ySize, xSize) {
     let randomGrid = [];
     randomGrid[0] = new Array(xSize + 2).fill(0);
@@ -154,7 +165,7 @@ function startOrStop() {
         startSimulation();
         playButton.setAttribute('class', 'pause')
     } else {
-        playButton.setAttribute('class', 'start')
+        playButton.setAttribute('class', 'play')
     }
 }
 
