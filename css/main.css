@@ -172,6 +172,6 @@ header button.options {
     color: white;
     font-size: xx-large;
     font-weight: bold;
-    border: 0px;
+    border: 0;
     text-transform: uppercase;
 }
