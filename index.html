@@ -36,7 +36,7 @@
                     <li><button onclick="showRandomGrid(15, 33)" class="randomize"><span>randomize</span></button></li>
                     <li><button onclick="resetGrid()" class="reset"><span>reset</span></button></li>
                     <li><button onclick="options()" class="options"><span>options</span></button></li>
-                    <li><button onclick="help()" class="help"><span>help</span></button></li>
+                    <li><button onclick="help()" class="help" id="help"><span>help</span></button></li>
                 </ul>
             </nav>
         </header>
@@ -47,6 +47,23 @@
 <div id="cell-container">
 
 </div>
+
+<div id="helpOverlay">
+    <div class="helpBoxContainer">
+        <div class="helpBox">
+            <h2>Rules</h2>
+            <ul class="rules">
+                <li>Any living cell with fewer than two living neighbors dies, as if by underpopulation.</li>
+                <li>Any living cell with two or three living neighbors lives on to the next generation.</li>
+                <li>Any living cell with more than three living neighbors dies, as if by overpopulation.</li>
+                <li>Any dead cell with exactly three living neighbors becomes a living cell, as if by reproduction.
+                </li>
+            </ul>
+        </div>
+        <button onclick="hideHelpOverlay()" class="helpOverlayButton">X</button>
+    </div>
+</div>
+
 
 
 <script src="js/app.js"></script>
