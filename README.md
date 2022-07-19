@@ -76,3 +76,11 @@
     - [Web fonts](https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Web_fonts)
     - [A visual introduction to Git](https://medium.com/@ashk3l/a-visual-introduction-to-git-9fdca5d3b43a)
     - [Learn Git Branching](https://learngitbranching.js.org)
+- Day 11:
+  - Code review changes + merge of [Add a welcome screen](https://github.com/EwanLenhard/game-of-life/issues/8) issue
+  - Create a Favicon](https://github.com/EwanLenhard/game-of-life/issues/17)
+  - Useful links:
+    - [Favicon-Generator](https://realfavicongenerator.net/)
+    - [How to Favicon in 2022](https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs)
+- Day 12:
+  - [Add a help/info dialog](https://github.com/EwanLenhard/game-of-life/issues/10) with explanation of the rules
