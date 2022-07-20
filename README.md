@@ -84,3 +84,8 @@
     - [How to Favicon in 2022](https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs)
 - Day 12:
   - [Add a help/info dialog](https://github.com/EwanLenhard/game-of-life/issues/10) with explanation of the rules
+
+
+## General resources
+
+- [Learning DOM API in a playful way](https://dom-city.github.io)
