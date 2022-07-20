@@ -9,10 +9,22 @@ let grid = [
 
 const gridContainerElement = document.getElementById('cell-container');
 
+const viewportWidth = window.innerWidth;
+const viewportHeight = window.innerHeight;
+
+let cellSize = 15; /* TODO should be changeable by user */
+
+console.log(viewportWidth);
+
+function getMaxGridCols() {
+    console.log(parseInt(viewportWidth / cellSize));
+    return parseInt(viewportWidth / cellSize);
+}
+
 function start() {
     hideOverlay();
-    showRandomGrid(15, 33);
-    startOrStop()
+    showRandomGrid(15, getMaxGridCols());
+    startOrStop();
 }
 
 function hideOverlay() {
@@ -116,9 +128,9 @@ function setGridSize(ySize, xSize) {
     style.sheet.insertRule(`
         #cell-container {
             display: grid;
-            grid-template-columns: repeat(${xSize}, 45px);
-            grid-template-rows: repeat(${ySize}, 45px);
-            gap: 5px;
+            grid-template-columns: repeat(${xSize}, ${cellSize}px);
+            grid-template-rows: repeat(${ySize}, ${cellSize}px);
+            gap: 1px;
         }
     `
     )
