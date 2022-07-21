@@ -50,7 +50,7 @@ function createRandomGrid(ySize, xSize) {
     return randomGrid;
 }
 
-var _isPaused=false;
+let _isPaused = true; /* Necessary to set it to true because startOrStop function will toggle it */
 
 function showRandomGrid(ySize, xSize) {
     let randomGrid = createRandomGrid(ySize, xSize);
@@ -73,8 +73,43 @@ function createEvolvedGrid(grid, newGrid) {
         for (x = 1; x < grid[y].length - 1; x++) {
             prepareEvolvedGrid(grid, newGrid, y, x);
             showEvolvedGrid(grid, y, x);
+            attachClickListener();
         }
     }
+}
+
+function attachClickListener() {
+
+    if (!_isPaused) {
+        return;
+    }
+
+    gridContainerElement.onclick = function(event) {
+        const cell = event.target;
+        const yPos = cell.getAttribute('data-y');
+        const xPos = cell.getAttribute('data-x');
+        toggleCellState(cell, yPos, xPos);
+    }
+}
+
+function toggleCellState(cellNode, yPos, xPos) {
+    if (grid[yPos][xPos] === 1) {
+        cellNode.setAttribute('class', 'dead');
+        grid[yPos][xPos] = 0;
+    } else {
+        cellNode.setAttribute('class', 'alive');
+        grid[yPos][xPos] = 1;
+    }
+    showEvolvedGrid(grid, yPos, xPos);
+}
+
+function toggleEditMode(toggle) {
+    if (toggle) {
+        gridContainerElement.setAttribute('class', 'editing-active');
+    } else {
+        gridContainerElement.removeAttribute('class');
+    }
+
 }
 
 function countNeighborCells(grid, y, x) {
@@ -96,31 +131,28 @@ function prepareEvolvedGrid(grid, newGrid, y, x) {
     if (value === 0) {
         if (neighborCount === 3) {
             newGrid[y][x] = 1;
-            console.log('birth');
         } else {
             newGrid[y][x] = 0;
-            console.log('death');
         }
     } else {
         if (neighborCount === 3 || neighborCount === 2) {
             newGrid[y][x] = 1;
-            console.log ('alive');
         } else {
             newGrid[y][x] = 0;
-            console.log ('death');
         }
     }
 }
 
 function showEvolvedGrid(grid, y, x) {
     const cell = document.createElement('div');
-    cell.setAttribute('class', 'cell')
+    cell.setAttribute('class', 'cell');
+    cell.setAttribute('data-x', x);
+    cell.setAttribute('data-y', y);
     if (grid[y][x] === 1) {
         cell.setAttribute('class', 'alive');
     } else {
         cell.setAttribute('class', 'dead');
-        }
-    cell.innerHTML = grid[y][x];
+    }
     gridContainerElement.appendChild(cell);
 }
 
@@ -148,10 +180,14 @@ function deleteGrid() {
     gridContainerElement.innerHTML = '';
 }
 
+function removeClickListener() {
+    gridContainerElement.removeEventListener("click", attachClickListener);
+}
+
 function startSimulation() {
     var loopTimeout = function(i, interval, func) {
 
-        if(!_isPaused) {
+        if (_isPaused) {
             return;
         }
         // Call the function
@@ -177,11 +213,15 @@ setGridSize(grid.length - 2);
 function startOrStop() {
     _isPaused = !_isPaused;
     const playButton = document.getElementById('play-button')
-    if(_isPaused) {
+    if (!_isPaused) {
+        removeClickListener();
+        toggleEditMode(false);
         startSimulation();
         playButton.setAttribute('class', 'pause')
     } else {
         playButton.setAttribute('class', 'play')
+        toggleEditMode(true);
+        attachClickListener();
     }
 }
 

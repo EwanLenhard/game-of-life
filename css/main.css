@@ -2,6 +2,15 @@ body {
     font-family: 'Josefin-Sans';
 }
 
+#cell-container.editing-active div {
+    border: 5px solid transparent;
+}
+
+#cell-container.editing-active div:hover {
+    border: 5px solid rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+}
+
 h2 {
     color: white;
     text-align: center;
@@ -14,14 +23,14 @@ h2 {
     width: 45px;
 }
 
+
+
 .alive {
     background-color: #26c485;
-    color: #26c485;
 }
 
 .dead {
     background-color: rgb(36, 36, 36);
-    color: rgb(36, 36, 36);
 }
 
 header {
