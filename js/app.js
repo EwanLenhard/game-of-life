@@ -1,11 +1,4 @@
-let grid = [
-    [0, 0, 0, 0, 0, 0],
-    [0, 1, 1, 0, 0, 0],
-    [0, 1, 1, 0, 0, 0],
-    [0, 0, 0, 1, 1, 0],
-    [0, 0, 0, 1, 1, 0],
-    [0, 0, 0, 0, 0, 0]
-];
+let grid;
 
 const gridContainerElement = document.getElementById('cell-container');
 
@@ -13,7 +6,10 @@ const viewportWidth = window.innerWidth;
 const viewportHeight = window.innerHeight;
 const headerHeight = document.getElementById('header').offsetHeight;
 
-let cellSize = 50; /* TODO should be changeable by user */
+let ySize = 0;
+let xSize = 0;
+
+let cellSize = 30; /* TODO should be changeable by user */
 
 function getMaxGrid(dimension) {
     let amountgridItems = dimension / (cellSize + 1);
@@ -23,9 +19,12 @@ function getMaxGrid(dimension) {
     return parseInt(amountgridItems);
 }
 
+ySize = getMaxGrid(viewportHeight - headerHeight);
+xSize = getMaxGrid(viewportWidth);
+
 function start() {
     hideOverlay();
-    showRandomGrid(getMaxGrid(viewportHeight - headerHeight), getMaxGrid(viewportWidth));
+    showRandomGrid(ySize, xSize);
     startOrStop();
 }
 
@@ -46,13 +45,12 @@ function createRandomGrid(ySize, xSize) {
             randomGrid[y][x] = getRandomInt(2);
         }
     }
-    console.table('random', randomGrid);
     return randomGrid;
 }
 
 let _isPaused = true; /* Necessary to set it to true because startOrStop function will toggle it */
 
-function showRandomGrid(ySize, xSize) {
+function showRandomGrid() {
     let randomGrid = createRandomGrid(ySize, xSize);
     deleteGrid();
     grid = randomGrid;
@@ -217,8 +215,6 @@ function startSimulation() {
     });
 }
 
-setGridSize(grid.length - 2);
-
 function startOrStop() {
     _isPaused = !_isPaused;
     const playButton = document.getElementById('play-button')
@@ -252,4 +248,26 @@ function hideHelpOverlay() {
     const overlay = document.getElementById('helpOverlay');
     overlay.style['display'] = 'none';
     startOrStop();
+}
+
+
+
+function createEmptyGrid(ySize, xSize){
+    let newGrid = [];
+    newGrid[0] = new Array(xSize + 2).fill(0);
+    newGrid[ySize + 1] = new Array(xSize + 2).fill(0);
+    for (y = 1; y < ySize + 1; y++) {
+        newGrid[y] = [];
+        newGrid[y][0] = 0;
+        newGrid[y][xSize + 1] = 0;
+        for (x = 1; x < xSize + 1; x++) {
+        newGrid[y][x] = 0;
+        }
+    }
+    return newGrid;
+}
+
+function showClearedGrid() {
+    grid = createEmptyGrid(ySize, xSize);
+    nextEvolution();
 }
