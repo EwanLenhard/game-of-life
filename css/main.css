@@ -50,7 +50,8 @@ header nav ul {
 }
 
 .container {
-    position: sticky;
+    display: grid;
+    grid-template-rows: 1fr auto;
 }
 
 header button {
