@@ -176,3 +176,15 @@ function nextEvolution() {
     grid = newGrid;
 }
 
+function help() {
+    const overlay = document.getElementById('helpOverlay');
+    overlay.style['display'] = 'flex';
+    startOrStop();
+
+}
+
+function hideHelpOverlay() {
+    const overlay = document.getElementById('helpOverlay');
+    overlay.style['display'] = 'none';
+    startOrStop();
+}

@@ -76,3 +76,25 @@
     - [Web fonts](https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Web_fonts)
     - [A visual introduction to Git](https://medium.com/@ashk3l/a-visual-introduction-to-git-9fdca5d3b43a)
     - [Learn Git Branching](https://learngitbranching.js.org)
+- Day 11:
+  - Code review changes + merge of [Add a welcome screen](https://github.com/EwanLenhard/game-of-life/issues/8) issue
+  - Create a Favicon](https://github.com/EwanLenhard/game-of-life/issues/17)
+  - Useful links:
+    - [Favicon-Generator](https://realfavicongenerator.net/)
+    - [How to Favicon in 2022](https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs)
+- Day 12:
+  - [Add a help/info dialog](https://github.com/EwanLenhard/game-of-life/issues/10) with explanation of the rules
+- Day 13:
+  - Talk and agree on final start button layout (Issue [#21](https://github.com/EwanLenhard/game-of-life/pull/21)) incl. transition
+  - Implement [grid auto scaling](https://github.com/EwanLenhard/game-of-life/pull/22)
+  - Implement [cell editing feature](https://github.com/EwanLenhard/game-of-life/pull/23)
+  - Useful links:
+    - [An Interactive Guide to CSS Transitions](https://www.joshwcomeau.com/animation/css-transitions/)
+    - [Online tool to visualize 2D & 3D CSS3 Transform functions](https://css-transform.moro.es/)
+    - [Drop-in CSS transitions](https://www.transition.style/)
+
+## General resources
+
+- [Learning DOM API in a playful way](https://dom-city.github.io)
+- [Complete Git and GitHub Tutorial](https://www.youtube.com/watch?v=apGV9Kg7ics) (Youtube)
+- [CSS Layout cookbook](https://developer.mozilla.org/en-US/docs/Web/CSS/Layout_cookbook)
