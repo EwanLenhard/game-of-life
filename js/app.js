@@ -85,7 +85,17 @@ function attachClickListener() {
     }
 
     gridContainerElement.onclick = function(event) {
-        const cell = event.target;
+        const target = event.target;
+
+        /** If you click on the border line it will be interpreted as a click on the gridContainerElement, but we are
+         * only interested in a cell, so we need to find out if it's cell and only handle these
+         */
+        if (target === gridContainerElement) {
+            return;
+        }
+
+        const cell = target;
+
         const yPos = cell.getAttribute('data-y');
         const xPos = cell.getAttribute('data-x');
         toggleCellState(cell, yPos, xPos);
@@ -100,7 +110,6 @@ function toggleCellState(cellNode, yPos, xPos) {
         cellNode.setAttribute('class', 'alive');
         grid[yPos][xPos] = 1;
     }
-    showEvolvedGrid(grid, yPos, xPos);
 }
 
 function toggleEditMode(toggle) {
