@@ -49,6 +49,7 @@ function createRandomGrid(ySize, xSize) {
 }
 
 let _isPaused = true; /* Necessary to set it to true because startOrStop function will toggle it */
+let globalPausedState = _isPaused;
 
 function showRandomGrid() {
     let randomGrid = createRandomGrid(ySize, xSize);
@@ -217,6 +218,7 @@ function startSimulation() {
 
 function startOrStop() {
     _isPaused = !_isPaused;
+    globalPausedState = _isPaused;
     const playButton = document.getElementById('play-button')
     if (!_isPaused) {
         removeClickListener();
@@ -240,14 +242,19 @@ function nextEvolution() {
 function help() {
     const overlay = document.getElementById('helpOverlay');
     overlay.style['display'] = 'flex';
-    startOrStop();
+    if (!globalPausedState) {
+        startOrStop();
+    }
 
 }
 
 function hideHelpOverlay() {
     const overlay = document.getElementById('helpOverlay');
     overlay.style['display'] = 'none';
-    startOrStop();
+    if (globalPausedState) {
+        _isPaused = true;
+        startOrStop();
+    }
 }
 
 
