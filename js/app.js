@@ -179,12 +179,12 @@ function nextEvolution() {
 function help() {
     const overlay = document.getElementById('helpOverlay');
     overlay.style['display'] = 'flex';
-    startOrStop()
+    startOrStop();
 
 }
 
 function hideHelpOverlay() {
     const overlay = document.getElementById('helpOverlay');
     overlay.style['display'] = 'none';
-    startOrStop()
+    startOrStop();
 }

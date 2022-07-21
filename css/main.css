@@ -201,19 +201,19 @@ header button.options {
     border-radius: 10px;
     padding: 10px 30px;
     border: 0;
-    margin: 40px auto 0 auto;
+    margin: 2px 10px 40px auto;
     display: block;
 }
 
 #helpOverlay .helpBoxContainer {
     color: white;
-    padding: 60px 40px;
+    padding: 40px 40px;
     width: 850px;
     height: auto;
     border-radius: 10px;
     background-color: #363636; 
 }
 
-.rules {
+#helpOverlay .rules {
     font-size: 18px;
 }
