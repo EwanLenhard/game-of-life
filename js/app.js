@@ -9,9 +9,23 @@ let grid = [
 
 const gridContainerElement = document.getElementById('cell-container');
 
+const viewportWidth = window.innerWidth;
+const viewportHeight = window.innerHeight;
+const headerHeight = document.getElementById('header').offsetHeight;
+
+let cellSize = 50; /* TODO should be changeable by user */
+
+function getMaxGrid(dimension) {
+    let amountgridItems = dimension / (cellSize + 1);
+    if (parseInt(dimension / amountgridItems) <= cellSize + 1) {
+        amountgridItems--;
+    }
+    return parseInt(amountgridItems);
+}
+
 function start() {
     hideOverlay();
-    showRandomGrid(15, 33);
+    showRandomGrid(getMaxGrid(viewportHeight - headerHeight), getMaxGrid(viewportWidth));
     startOrStop();
 }
 
@@ -32,7 +46,7 @@ function createRandomGrid(ySize, xSize) {
             randomGrid[y][x] = getRandomInt(2);
         }
     }
-    console.table(randomGrid);
+    console.table('random', randomGrid);
     return randomGrid;
 }
 
@@ -148,9 +162,11 @@ function setGridSize(ySize, xSize) {
     style.sheet.insertRule(`
         #cell-container {
             display: grid;
-            grid-template-columns: repeat(${xSize}, 45px);
-            grid-template-rows: repeat(${ySize}, 45px);
-            gap: 5px;
+            grid-template-columns: repeat(${xSize}, ${cellSize}px);
+            grid-template-rows: repeat(${ySize}, ${cellSize}px);
+            gap: 1px;
+            padding-top: 30px;
+            justify-self: center;
         }
     `
     )
@@ -216,3 +232,15 @@ function nextEvolution() {
     grid = newGrid;
 }
 
+function help() {
+    const overlay = document.getElementById('helpOverlay');
+    overlay.style['display'] = 'flex';
+    startOrStop();
+
+}
+
+function hideHelpOverlay() {
+    const overlay = document.getElementById('helpOverlay');
+    overlay.style['display'] = 'none';
+    startOrStop();
+}
