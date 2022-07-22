@@ -244,6 +244,40 @@ header button.options {
     background-color: #363636; 
 }
 
-#helpOverlay .rules {
+
+#optionsOverlay {
+    font-size: 18px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.6);
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    flex-direction: column;
+}
+
+#optionsOverlay .optionsOverlayButton {
+    background-color: rgb(38, 196, 133);
+    border-radius: 10px;
+    padding: 10px 30px;
+    border: 0;
+    margin: 40px auto 10px auto;
+    display: block;
+}
+
+#optionsOverlay .optionsBoxContainer {
+    color: white;
+    padding: 40px 40px;
+    width: 850px;
+    height: auto;
+    border-radius: 10px;
+    background-color: #363636; 
+}
+
+#optionsOverlay {
     font-size: 18px;
 }
