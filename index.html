@@ -61,8 +61,21 @@
                     </li>
                 </ul>
             </div>
+        </div>
     </div>
-
+    <div id="optionsOverlay">
+        <div class="optionsBoxContainer">
+            <div class="optionsBox">
+            <h2>Customize the cellsize</h2>
+                <div id="rangeInput">
+                    <input id="valCellSize" type="range" value="" min="" max="" step="5" oninput="this.nextElementSibling.value = this.value">
+                    <output id="cellSizeOutput"></output><label>px cellsize</label>
+                </div>
+                <div><button onclick="hideOptionsOverlay()" class="optionsOverlayButton">Confirm Changes</button></div>
+            
+            </div>
+        </div>
+    </div>
 
     <script src="js/app.js"></script>
 

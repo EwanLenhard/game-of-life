@@ -7,29 +7,33 @@ const viewportWidth = window.innerWidth;
 const viewportHeight = window.innerHeight;
 const headerHeight = document.getElementById('header').offsetHeight;
 
-let ySize = 0;
-let xSize = 0;
-
-let cellSize = 30; /* TODO should be changeable by user */
+let cellSize = 30; 
+const cellSizeMin = 10;
+const cellSizeMax = 150;
 
 let _isPaused = false;
 let animationShouldStart = false;
 
+let ySize = getMaxGrid(viewportHeight - headerHeight);
+let xSize = getMaxGrid(viewportWidth);
+
+function start() {
+    hideOverlay();
+    showRandomGrid(ySize, xSize);
+    document.getElementById('valCellSize').value = cellSize;
+    document.getElementById('valCellSize').max = cellSizeMax;
+    document.getElementById('valCellSize').min = cellSizeMin;
+    document.getElementById('cellSizeOutput').innerHTML = cellSize;
+    startSimulation();
+}
+
 function getMaxGrid(dimension) {
+    console.log('new cellsize', cellSize);
     let amountgridItems = dimension / (cellSize + 1);
     if (parseInt(dimension / amountgridItems) <= cellSize + 1) {
         amountgridItems--;
     }
     return parseInt(amountgridItems);
-}
-
-ySize = getMaxGrid(viewportHeight - headerHeight);
-xSize = getMaxGrid(viewportWidth);
-
-function start() {
-    hideOverlay();
-    showRandomGrid(ySize, xSize);
-    startSimulation();
 }
 
 function hideOverlay() {
@@ -267,8 +271,32 @@ function hideHelpOverlay() {
         startSimulation();
     }
 }
+function options() {
+    const overlay = document.getElementById('optionsOverlay');
+    overlay.style['display'] = 'flex';
+    if (!_isPaused) {
+        animationShouldStart = true;
+        stopSimulation();
+    }
 
+}
 
+function hideOptionsOverlay() {
+    const overlay = document.getElementById('optionsOverlay');
+    overlay.style['display'] = 'none';
+    newGridSize();
+    if (animationShouldStart) {
+        animationShouldStart = false;
+        startSimulation();
+    }
+}
+function newGridSize(){
+    const valCellSize = parseInt(document.getElementById('valCellSize').value);
+    cellSize = valCellSize;
+    ySize = getMaxGrid(viewportHeight - headerHeight);
+    xSize = getMaxGrid(viewportWidth);
+    showClearedGrid();
+}
 
 function createEmptyGrid(ySize, xSize){
     let newGrid = [];
@@ -286,6 +314,13 @@ function createEmptyGrid(ySize, xSize){
 }
 
 function showClearedGrid() {
-    grid = createEmptyGrid(ySize, xSize);
-    nextEvolution();
+    let clearedGrid = createEmptyGrid(ySize, xSize);
+    deleteGrid();
+    grid = clearedGrid;
+    setGridSize(ySize, xSize);
+    for (y = 1; y < grid.length - 1; y++) {
+        for (x = 1; x < grid[y].length - 1; x++) {
+            showEvolvedGrid(grid, y, x);
+        }
+    }
 }
