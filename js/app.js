@@ -1,6 +1,7 @@
 let grid;
 
 const gridContainerElement = document.getElementById('cell-container');
+const playButton = document.getElementById('play-button');
 
 const viewportWidth = window.innerWidth;
 const viewportHeight = window.innerHeight;
@@ -10,6 +11,9 @@ let ySize = 0;
 let xSize = 0;
 
 let cellSize = 30; /* TODO should be changeable by user */
+
+let _isPaused = false;
+let animationShouldStart = false;
 
 function getMaxGrid(dimension) {
     let amountgridItems = dimension / (cellSize + 1);
@@ -25,7 +29,7 @@ xSize = getMaxGrid(viewportWidth);
 function start() {
     hideOverlay();
     showRandomGrid(ySize, xSize);
-    startOrStop();
+    startSimulation();
 }
 
 function hideOverlay() {
@@ -48,7 +52,7 @@ function createRandomGrid(ySize, xSize) {
     return randomGrid;
 }
 
-let _isPaused = true; /* Necessary to set it to true because startOrStop function will toggle it */
+
 
 function showRandomGrid() {
     let randomGrid = createRandomGrid(ySize, xSize);
@@ -191,7 +195,7 @@ function removeClickListener() {
     gridContainerElement.removeEventListener("click", attachClickListener);
 }
 
-function startSimulation() {
+function startLoop() {
     var loopTimeout = function(i, interval, func) {
 
         if (_isPaused) {
@@ -216,18 +220,26 @@ function startSimulation() {
 }
 
 function startOrStop() {
-    _isPaused = !_isPaused;
-    const playButton = document.getElementById('play-button')
-    if (!_isPaused) {
-        removeClickListener();
-        toggleEditMode(false);
+    if (_isPaused) {
         startSimulation();
-        playButton.setAttribute('class', 'pause')
     } else {
-        playButton.setAttribute('class', 'play')
-        toggleEditMode(true);
-        attachClickListener();
+        stopSimulation();
     }
+}
+
+function startSimulation() {
+    _isPaused = false;
+    removeClickListener();
+    toggleEditMode(false);
+    startLoop();
+    playButton.setAttribute('class', 'pause');
+}
+
+function stopSimulation() {
+    _isPaused = true;
+    playButton.setAttribute('class', 'play');
+    toggleEditMode(true);
+    attachClickListener();
 }
 
 function nextEvolution() {
@@ -240,14 +252,20 @@ function nextEvolution() {
 function help() {
     const overlay = document.getElementById('helpOverlay');
     overlay.style['display'] = 'flex';
-    startOrStop();
+    if (!_isPaused) {
+        animationShouldStart = true;
+        stopSimulation();
+    }
 
 }
 
 function hideHelpOverlay() {
     const overlay = document.getElementById('helpOverlay');
     overlay.style['display'] = 'none';
-    startOrStop();
+    if (animationShouldStart) {
+        animationShouldStart = false;
+        startSimulation();
+    }
 }
 
 
