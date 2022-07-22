@@ -92,6 +92,9 @@
     - [An Interactive Guide to CSS Transitions](https://www.joshwcomeau.com/animation/css-transitions/)
     - [Online tool to visualize 2D & 3D CSS3 Transform functions](https://css-transform.moro.es/)
     - [Drop-in CSS transitions](https://www.transition.style/)
+- Day 14:
+  - [Implement clear grid functionality](https://github.com/EwanLenhard/game-of-life/issues/24)
+  - Several bugfixes
 
 ## General resources
 
