@@ -12,7 +12,7 @@ let xSize = 0;
 
 let cellSize = 30; /* TODO should be changeable by user */
 
-let _isPaused = false; 
+let _isPaused = false;
 let animationShouldStart = false;
 
 function getMaxGrid(dimension) {
@@ -231,7 +231,7 @@ function startSimulation() {
     _isPaused = false;
     removeClickListener();
     toggleEditMode(false);
-    startLoop();                          
+    startLoop();
     playButton.setAttribute('class', 'pause');
 }
 
@@ -253,8 +253,8 @@ function help() {
     const overlay = document.getElementById('helpOverlay');
     overlay.style['display'] = 'flex';
     if (!_isPaused) {
-        stopSimulation();
         animationShouldStart = true;
+        stopSimulation();
     }
 
 }
@@ -263,6 +263,7 @@ function hideHelpOverlay() {
     const overlay = document.getElementById('helpOverlay');
     overlay.style['display'] = 'none';
     if (animationShouldStart) {
+        animationShouldStart = false;
         startSimulation();
     }
 }
