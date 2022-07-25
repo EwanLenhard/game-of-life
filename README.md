@@ -95,6 +95,8 @@
 - Day 14:
   - [Implement clear grid functionality](https://github.com/EwanLenhard/game-of-life/issues/24)
   - Several bugfixes
+- Day 15:
+  - [Option Menu Slider for Gridsize](https://github.com/EwanLenhard/game-of-life/issues/35)
 
 ## General resources
 
