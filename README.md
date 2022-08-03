@@ -1,5 +1,17 @@
 # Game Of Life
 
+## Intro
+
+This project was developed from scratch during a 3 weeks internship at [BIX Digital](https://www.bix-digital.com/). From a basic HTML + CSS knowledge base the goal was to learn most of the relevant aspects of web development in a playful way, also learning a typical agile software workflow within a team - and to have the possibility to evolve the app further after the internship with public contributions here on Github.
+
+## Running the app
+
+The app can be started just by running [index.html](index.html) file in a web browser.
+
+## Demo
+
+![gol-screencast](https://user-images.githubusercontent.com/370980/182611757-e57fcb81-e986-4b43-bbc3-48d99e850b33.gif)
+
 ## Prerequisites
 
 - [What is the web?](https://www.youtube.com/playlist?list=PLo3w8EB99pqLEopnunz-dOOBJ8t-Wgt2g) (videos)
