@@ -112,6 +112,4 @@ The app can be started just by running [index.html](index.html) file in a web br
 
 ## General resources
 
-- [Learning DOM API in a playful way](https://dom-city.github.io)
-- [Complete Git and GitHub Tutorial](https://www.youtube.com/watch?v=apGV9Kg7ics) (Youtube)
-- [CSS Layout cookbook](https://developer.mozilla.org/en-US/docs/Web/CSS/Layout_cookbook)
+- [Must have resources to start in Frontend](https://gist.github.com/netzartist/20a7732427eb3b2de3c8f9794b6e130a)
